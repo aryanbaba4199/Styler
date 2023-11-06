@@ -30,7 +30,7 @@ export default function Home({ products }: any) {
 
 export const getServerSideProps = async (context: any) => {
     db?.connectDb();
-    const products = await Product?.find()
+    const products = await Product.find()
         ?.populate({ path: "category", model: Category })
         ?.sort({ updatedAt: -1 })
         ?.lean();

@@ -25,7 +25,7 @@ const SignInPage = ({ providers, csrfToken, callbackUrl }: any) => {
     const { login_email, login_password, login_error } = user;
 
     const handleChange = (e: any) => {
-        const { name, value } = e?.target;
+        const { name, value } = e.target;
         setUser({
             ...user,
             [name]: value,
@@ -131,23 +131,23 @@ const SignInPage = ({ providers, csrfToken, callbackUrl }: any) => {
 
                     <div className="flex flex-col md:flex-row">
                         {providers.map((provider: any) => {
-                            if (provider?.name === "Credentials") {
+                            if (provider.name === "Credentials") {
                                 return;
                             }
                             return (
                                 <div
-                                    onClick={() => signIn(provider?.id)}
-                                    key={provider?.name}
+                                    onClick={() => signIn(provider.id)}
+                                    key={provider.name}
                                     className="flex bg-white items-center w-full p-2 rounded-xl border mt-3 md:mt-1 mx-2 cursor-pointer"
                                 >
                                     <Image
-                                        src={`/../public/assets/images/${provider?.id}.png`}
-                                        alt={provider?.name}
+                                        src={`/../public/assets/images/${provider.id}.png`}
+                                        alt={provider.name}
                                         width={28}
                                         height={28}
                                     />
                                     <div className="text-sm w-full font-semibold ml-2">
-                                        Sign in with {provider?.name}
+                                        Sign in with {provider.name}
                                     </div>
                                 </div>
                             );

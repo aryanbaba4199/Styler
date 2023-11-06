@@ -13,5 +13,5 @@ export default function handler(
 ) {
   db.connectDb();
   db.disconnectDb()
-  res.status(200).json({ name: 'John Doe' })
+  res.status(200).json({ name: 'Aryan Dubey' })
 }

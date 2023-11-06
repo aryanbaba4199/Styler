@@ -10,7 +10,7 @@ import { Pagination, Navigation } from "swiper";
 
 const HomeProductSwiper = ({ products, category }: any) => {
     let selectedProducts = products.filter(
-        (p: any) => p.category.name === category
+        (p: any) => p.category?.name === category
     );
     return (
         <div className="z-50 flex flex-col rounded bg-white h-auto mb-4 mx-4  p-4 border">

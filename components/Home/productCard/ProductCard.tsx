@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import ProductSwiper from "./ProductSwiper";
 
 const ProductCard = ({ product }: any) => {
+    console.log("Card " , product);
     const [active, setActive] = useState(0);
     const [images, setImages] = useState(product.subProducts[active]?.images);
     const [prices, setPrices] = useState(
@@ -17,10 +18,13 @@ const ProductCard = ({ product }: any) => {
 
     useEffect(() => {
         setImages(product.subProducts[active]?.images);
-        setPrices(
-            product.subProducts[active]?.sizes
+         let price = product.subProducts[active]?.sizes
                 .map((s: any) => s.price)
-                .sort((a: any, b: any) => a - b)
+                .sort((a: any, b: any) => a - b);
+                
+
+        setPrices(
+            price
         );
     }, [active]);
 
@@ -42,11 +46,14 @@ const ProductCard = ({ product }: any) => {
                             : product.name}
                     </h3>
                 </Link>
-                <span className="text-xs text-red-500">
+                <span className="text-xl font-semibold text-lime-700">
                     {prices.length === 1
-                        ? `USD${prices[0]}$`
-                        : `USD${prices[0]} - ${prices[prices.length - 1]}$`}
-                </span>
+                        ? `Price : ${prices[0]}/-`
+                        : `Price : ${prices[0]} - ${prices[prices.length - 1]}/-`}
+                        
+                        
+                </span><br/>
+                <text>Get Discount</text>
                 <div className="flex space-x-2 mt-1">
                     {styles &&
                         styles.map((style: any, i: number) =>

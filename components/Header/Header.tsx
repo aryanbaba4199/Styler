@@ -45,7 +45,7 @@ const Header = ({title, searchHandler}: any) => {
                                 <Image
                                     src={amazonLogo}
                                     alt="amazon-logo"
-                                    className="object-contain w-20 md:w-28 pt-2"
+                                    className="object-contain w-32 md:w-32 pt-2"
                                 />
                             </Link>
                         </div>

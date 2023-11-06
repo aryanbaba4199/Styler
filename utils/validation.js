@@ -14,9 +14,9 @@ export const validateCreateProduct = (product, images) => {
         type: "success"
     }];
 
-    if(images.length < 3) {
+    if(images.length < 1) {
         checks.push({
-            msg: `Choose atleast 3 images (${3 - images.length} remaining).`,
+            msg: `Choose atleast 1 images (${1 - images.length} remaining).`,
             type: "error"
         })
     } else {
@@ -37,10 +37,7 @@ export const validateCreateProduct = (product, images) => {
         })
     }
     if (!product.color.image) {
-        checks.push({
-            msg: `Choose a main product style image.`,
-            type: "error"
-        })
+        
     } else {
         checks.push({
             msg: `Product style image has been choosen.`,

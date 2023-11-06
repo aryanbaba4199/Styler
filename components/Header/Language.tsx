@@ -1,14 +1,14 @@
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 
-import enFlag from "../../public/assets/images/en-flag.png";
+import inFlag from "../../public/assets/images/inFlag.png";
 
 const Language = () => {
     return ( 
         <div className="show-account relative hidden md:flex items-center link self-end mb-1.5">
             <div className="relative w-6 h-6">
                 <Image
-                    src={enFlag}
+                    src={inFlag}
                     alt="flag-country"
                     className="object-contain"
                     fill
@@ -28,18 +28,7 @@ const Language = () => {
                         English - EN
                     </label>
                     <div className="w-full h-[1px] bg-gray-200 my-2" />
-                    <label className=" flex text-xs text-gray-900 mt-2 " htmlFor="">
-                        <input className="mr-2 text-amazon-orange" type="radio" name="" id="" />
-                        español - ES
-                    </label>
-                    <label className=" flex text-xs text-gray-900 mt-2 " htmlFor="">
-                        <input className="mr-2 text-amazon-orange" type="radio" name="" id="" />
-                        العربية - AR
-                    </label>
-                    <label className=" flex text-xs text-gray-900 mt-2 " htmlFor="">
-                        <input className="mr-2 text-amazon-orange" type="radio" name="" id="" />
-                        Deutsch - DE
-                    </label>
+                    
                 </div>
                 
             </div>

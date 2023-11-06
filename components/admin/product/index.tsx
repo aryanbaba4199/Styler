@@ -21,7 +21,7 @@ const AllProcuct = ({ products }: any) => {
                                 <Image
                                     className="object-contained"
                                     fill
-                                    src={product.subProducts[0].images[0].url}
+                                    src={product.subProducts[0].images[0]?.url}
                                     alt={product.name}
                                 />
                             </div>
@@ -32,7 +32,7 @@ const AllProcuct = ({ products }: any) => {
                             </Link>
                             <div className="mt-2 text-xs flex flex-col ">
                                 <div>Sku: {product.subProducts[0].sku}</div>
-                                <div>Category: {product.category.name}</div>
+                                <div>Category: {product.category?.name}</div>
                                 <div>
                                     Created:{" "}
                                     {`${created.getFullYear()}-${created.getMonth()}-${created.getDate()}`}

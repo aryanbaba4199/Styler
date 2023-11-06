@@ -118,7 +118,7 @@ const Infos = ({ product, setActiveImg }: any) => {
         <div className="flex flex-col row-span-3 md:col-span-3 max-md:px-2 mb-4">
             <h1 className="text-2xl font-bold ">{product.name}</h1>
             <div className="flex items-center ">
-                <span className="cursor-pointer uppercase hover:underline text-sm mr-3 text-slate-600">
+                <span className="cursor-pointer uppercase hover:underline text-sm mr-3 font-semibold text-slate-600">
                     {product.brand}
                 </span>
                 <Rating
@@ -136,17 +136,17 @@ const Infos = ({ product, setActiveImg }: any) => {
             <div className="flex w-full bg-slate-200 h-[1px]" />
 
             <div className="mt-2 flex items-center">
-                <div className="text-4xl font-semibold text-red-500">
-                    {!size ? `${product.priceRange}` : `${product.price}$`}
+                <div className="text-3xl font-semibold text-lime-700"> 
+                    {!size ? `${product.price}/-` : `${product.price}/-`}
                 </div>
 
-                {product.discount > 0 ? (
-                    <div className="ml-2  text-slate-400">
-                        {size && (
+                {product.discount ? (
+                    <div className="ml-2 font-semibold  text-slate-600">
+                        
                             <span className=" text-xl line-through">
                                 {product.priceBefore}
                             </span>
-                        )}
+                        
                         <span className="ml-1 text-blue-500">
                             (-{product.discount}%)
                         </span>

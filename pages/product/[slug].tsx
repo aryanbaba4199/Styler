@@ -9,7 +9,8 @@ import SubCategory from "@/models/SubCategory";
 import User from "@/models/User";
 
 const SingleProduct = ({ product }: any) => {
-    // console.log(product);
+    let dis = product.discount;
+    console.log("Handy",dis);
     return (
         <>
             <Header title={product.name} />
@@ -40,6 +41,8 @@ export const getServerSideProps = async (context: any) => {
         .map((s: any) => s.price)
         .sort((a: any, b: any) => a - b);
 
+        
+
     let newProduct = {
         ...product,
         style,
@@ -56,15 +59,19 @@ export const getServerSideProps = async (context: any) => {
                       prices[prices.length - 1] -
                       prices[prices.length - 1] / subProduct.discount
                   ).toFixed(2)} `
-                : `From ${prices[0]} to ${prices[prices.length - 1]}$`,
+                : `From ${prices[0]} to ${prices[prices.length - 1]}`,
         price:
             subProduct.discount > 0
                 ? (
-                      subProduct.sizes[size].price -
-                      subProduct.sizes[size].price / subProduct.discount
-                  ).toFixed(2)
+                    subProduct.sizes[size].price
+                  )
                 : subProduct.sizes[size].price,
-        priceBefore: subProduct.sizes[size].price,
+        priceBefore : 
+        ((subProduct.sizes[size].price*subProduct.discount)/100)+(subProduct.sizes[size].price), 
+        
+        
+        
+
         quantity: subProduct.sizes[size].qty,
         ratings: [
             {

@@ -159,7 +159,8 @@ const CreateProduct = ({
                 }}
                 validationSchema={validate}
                 onSubmit={() => {
-                    CreateProduct();
+                    // CreateProduct();
+                    createProductHnadler();
                 }}
             >
                 {(formik) => (

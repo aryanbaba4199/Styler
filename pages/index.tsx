@@ -29,12 +29,12 @@ export default function Home({ products }: any) {
 }
 
 export const getServerSideProps = async (context: any) => {
-    db.connectDb();
-    const products = await Product.find()
-        .populate({ path: "category", model: Category })
-        .sort({ updatedAt: -1 })
-        .lean();
-    db.disconnectDb();
+    db?.connectDb();
+    const products = await Product?.find()
+        ?.populate({ path: "category", model: Category })
+        ?.sort({ updatedAt: -1 })
+        ?.lean();
+    db?.disconnectDb();
     return {
         props: {
             products: JSON.parse(JSON.stringify(products)),

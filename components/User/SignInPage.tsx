@@ -48,13 +48,13 @@ const SignInPage = ({ providers, csrfToken, callbackUrl }: any) => {
         };
 
         const res = await signIn("credentials", options);
-        setUser({
-            ...user,
-            login_error: "",
-        });
-        setLoading(false);
+        
 
         if (res?.error) {
+            setUser({
+                ...user,
+                login_error: "",
+            });
             setLoading(false);
             setUser({
                 ...user,

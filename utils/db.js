@@ -30,7 +30,7 @@ async function disconnectDb(){
     if(connection.isConnected) {
         if(process.env.NODE_END === "production"){
             await mongoose.disconnect();
-            connection.isConnected = false;
+            connection.isConnected = true;
         } else {
             console.log("not disconnected from the database")
         }

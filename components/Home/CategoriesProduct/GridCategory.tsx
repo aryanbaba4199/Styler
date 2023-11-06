@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const GridCategory = ({ category, products, gridCols}: any) => {
     const length = gridCols * gridCols;
-    const selectedProducts = products.filter( (product: any) => ( category == product.category?.slug)).slice(0, length);
+    const selectedProducts = products?.filter( (product: any) => ( category == product?.category?.slug))?.slice(0, length);
     return ( 
         <div className="flex flex-col bg-white border rounded p-2">
                 <h3 className="font-bold my-2 uppercase">{category.replace("-"," ")}</h3>
@@ -22,7 +22,7 @@ const GridCategory = ({ category, products, gridCols}: any) => {
                                     className="object-cover rounded"
                                 />  
                             </div>
-                            {length > 1 && (<h4 className="text-xs mt-1">{product.name}</h4>)}
+                            {length > 1 && (<h4 className="text-xs mt-1">{product?.name}</h4>)}
                         </Link>
                     ))}
 

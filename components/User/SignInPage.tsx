@@ -40,29 +40,31 @@ const SignInPage = ({ providers, csrfToken, callbackUrl }: any) => {
     });
 
     const signInHandler = async () => {
-        setLoading(true);
-        let options = {
-            redirect: false,
-            email: login_email,
-            password: login_password,
-        };
+        console.log("signInHandler");
+        // setLoading(true);
+        // let options = {
+        //     redirect: false,
+        //     email: login_email,
+        //     password: login_password,
+        // };
 
-        const res = await signIn("credentials", options);
-        setUser({
-            ...user,
-            login_error: "",
-        });
-        setLoading(false);
+        // const res = await signIn("credentials", options);
+        // setUser({
+        //     ...user,
+        //     login_error: "",
+        // });
+        // setLoading(false);
 
-        if (res?.error) {
-            setLoading(false);
-            setUser({
-                ...user,
-                login_error: res?.error,
-            });
-        } else {
-            return Router.push(callbackUrl || "/");
-        }
+        // if (res?.error) {
+        //     setLoading(false);
+        //     setUser({
+        //         ...user,
+        //         login_error: res?.error,
+        //     });
+        // } else {
+        //     return Router.push(callbackUrl || "/");
+            
+        // }
     };
 
     return (

@@ -13,6 +13,7 @@ const GridCategory = ({ category, products, gridCols}: any) => {
                         <Link href=
                             "/browse"
                             // `/product/${product.name}`} key={product._id}        //have to fix
+                            key={product._id} 
                             >
                             <div className={`relative  ${length > 1 ? 'h-[200px]' : 'h-[420px]'}`}>
                                 <Image

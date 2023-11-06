@@ -10,13 +10,12 @@ const SignIn = ({ providers, csrfToken, callbackUrl }: any) => {
     
     return ( 
         <>
-        <h2>Signin</h2>
-            {/* <Header />
+            <Header />
                 <main className="bg-slate-100 w-full h-auto">
                     <SignInPage providers={providers} csrfToken={csrfToken} callbackUrl={callbackUrl}/>
                 </main>
             <Footer />
-            <MenuSideBar /> */}
+            <MenuSideBar />
         </>
      );
 }

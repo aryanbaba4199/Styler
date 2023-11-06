@@ -11,7 +11,7 @@ import User from "../../../models/User";
 import bcrypt from "bcrypt";
 
 db.connectDb();
-let admins = ["aryanbaba4199@gmail.com", "pawan2dubey@gmail.com"];
+
 export const authOptions = {
     adapter: MongoDBAdapter(clientPromise),
   // Configure one or more authentication providers
@@ -29,7 +29,10 @@ export const authOptions = {
         }
       }
     }),
-    
+    GithubProvider({
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
+    }),
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
@@ -40,14 +43,8 @@ export const authOptions = {
     async session({ session, token }) {
       let user = await User.findById(token.sub);
       session.user.id = user.token || user.id.toString();
-      
-      if (admins.includes(user.email)) {
-        session.user.role = "admin";
-        token.role = "admin";
-      } else {
-        session.user.role = "user";
-        token.role = "user";
-      }
+      session.user.role = user.role || "user";
+      token.role = user.role || "user";
       return session; 
     },
   },
@@ -57,7 +54,7 @@ export const authOptions = {
   session: {
     strategy: "jwt"
   },
-  secret: "sddfjksfkshjkfhsfjsajfabbhhb",
+  secret: process.env.JWT_SECRET,
 }
 
 export default NextAuth(authOptions);

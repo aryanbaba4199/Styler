@@ -22,7 +22,7 @@ const AccountButtons = () => {
             <div className=" md:hidden">
                 <text className="flex items-center" onClick={() => signIn()}>
                     <p className="text-sm">
-                    {session ? session.user?.name : "sign in"}
+                    {session ? session?.user?.name : "sign in"}
                     </p>
                     <ChevronRightIcon className="h-3 " />
                     <UserIcon className="h-6" />
@@ -31,7 +31,7 @@ const AccountButtons = () => {
 
             <div className="hidden md:inline link relative show-account p-1">
                 <p className="text-xs text-slate-300">
-                    Hello, {session ? session.user?.name : "sign in"}
+                    Hello, {session ? session?.user?.name : "sign in"}
                 </p>
                 <p className="flex font-bold text-sm">
                     Account & Lists
@@ -46,7 +46,7 @@ const AccountButtons = () => {
                             <p className="text-xl text-amazon-blue_light">
                                 Hi,{" "}
                                 <Link href="/profile">
-                                    <b>{session.user?.name}</b>
+                                    <b>{session?.user?.name}</b>
                                 </Link>
                             </p>
                             <div className="flex space-x-2">

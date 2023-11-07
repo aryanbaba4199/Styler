@@ -16,27 +16,27 @@ export const authOptions = {
     adapter: MongoDBAdapter(clientPromise),
   // Configure one or more authentication providers
   providers: [
-    CredentialsProvider({
-      name: "Credentials",
-      async authorize(credentials, req) {
-        const email  = credentials.email;
-        const password = credentials.password;
-        const user = await User.findOne({ email })
-        if (user) {
-          return signInUser({ password, user });
-        } else {
-          throw new Error("This email does not exist.")
-        }
-      }
-    }),
+    // CredentialsProvider({
+    //   name: "Credentials",
+    //   async authorize(credentials, req) {
+    //     const email  = credentials.email;
+    //     const password = credentials.password;
+    //     const user = await User.findOne({ email })
+    //     if (user) {
+    //       return signInUser({ password, user });
+    //     } else {
+    //       throw new Error("This email does not exist.")
+    //     }
+    //   }
+    // }),
     // GithubProvider({
     //   clientId: process.env.GITHUB_ID,
     //   clientSecret: process.env.GITHUB_SECRET,
     // }),
-    // GoogleProvider({
-    //   clientId: process.env.GOOGLE_ID,
-    //   clientSecret: "sdudfihuskhfiusghdiufIUYHGUYGYUBJBdskhkugsufus",
-    // }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_ID,
+      clientSecret: "sdudfihuskhfiusghdiufIUYHGUYGYUBJBdskhkugsufus",
+    }),
     // ...add more providers here
   ],
   callbacks: {

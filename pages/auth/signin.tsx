@@ -7,6 +7,7 @@ import { getProviders, getCsrfToken, getSession } from "next-auth/react";
 
 const SignIn = ({ providers, csrfToken, callbackUrl }: any) => {
     providers = Object.values(providers);
+    console.log(providers, csrfToken, callbackUrl);
     
     return ( 
         <>
@@ -34,7 +35,7 @@ export const getServerSideProps = async (context: any) => {
     if(session) {
         return {
             redirect: {
-                destination: JSON.stringify("/")
+                destination: callbackUrl
             }
         }
     }
@@ -49,3 +50,4 @@ export const getServerSideProps = async (context: any) => {
         }
     }
 }
+

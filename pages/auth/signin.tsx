@@ -5,26 +5,6 @@ import SignInPage from "@/components/User/SignInPage";
 
 import { getProviders, getCsrfToken, getSession } from "next-auth/react";
 
-const SignIn = ({ providers, csrfToken, callbackUrl }: any) => {
-    providers = Object.values(providers);
-    console.log(providers, csrfToken, callbackUrl);
-    
-    return ( 
-        <>
-            <Header />
-                <main className="bg-slate-100 w-full h-auto">
-                    <SignInPage providers={providers} csrfToken={csrfToken} callbackUrl={callbackUrl}/>
-                </main>
-            <Footer />
-            <MenuSideBar />
-        </>
-     );
-}
- 
-export default SignIn;
-
-
-
 export const getServerSideProps = async (context: any) => {
     const { req, query } = context;
     const { callbackUrl = null } = query || null;
@@ -50,4 +30,26 @@ export const getServerSideProps = async (context: any) => {
         }
     }
 }
+
+const SignIn = ({ providers, csrfToken, callbackUrl }: any) => {
+    providers = Object.values(providers);
+    console.log(providers, csrfToken, callbackUrl);
+    
+    return ( 
+        <>
+            <Header />
+                <main className="bg-slate-100 w-full h-auto">
+                    <SignInPage providers={providers} csrfToken={csrfToken} callbackUrl={callbackUrl}/>
+                </main>
+            <Footer />
+            <MenuSideBar />
+        </>
+     );
+}
+ 
+export default SignIn;
+
+
+
+
 

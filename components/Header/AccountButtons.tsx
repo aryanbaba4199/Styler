@@ -20,13 +20,11 @@ const AccountButtons = () => {
         <div className="flex items-center max-md:ml-auto md:space-x-6 space-x-2">
             {/* account Icon in Mobile */}
             <div className=" md:hidden">
-                <text className="flex items-center" onClick={() => signIn()}>
-                    <p className="text-sm">
-                    {session ? session.user?.name : "sign in"}
-                    </p>
+                <Link className="flex items-center" href="/auth/signin">
+                    <p className="text-sm">Sign in</p>
                     <ChevronRightIcon className="h-3 " />
                     <UserIcon className="h-6" />
-                </text>
+                </Link>
             </div>
 
             <div className="hidden md:inline link relative show-account p-1">
@@ -65,12 +63,14 @@ const AccountButtons = () => {
                         </div>
                     ) : (
                         <div className="flex flex-col items-center p-3 m-3 border-b pb-2">
+                            <Link href="/auth/signin">
                             <button
-                                onClick={() => signIn()}
+                                
                                 className="button-orange px-16 py-[0.3rem] text-sm text-gray-900"
                             >
                                 Sign in
                             </button>
+                            </Link>
                             <p className="text-xs text-gray-900 mt-2">
                                 New customer?{" "}
                                 <Link

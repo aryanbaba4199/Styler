@@ -24,28 +24,28 @@ export default SignIn;
 
 
 
-// export const getServerSideProps = async (context: any) => {
-//     const { req, query } = context;
-//     const { callbackUrl = null } = query || null;
-//     // console.log('call:',callbackUrl, query, context)
+export const getServerSideProps = async (context: any) => {
+    const { req, query } = context;
+    const { callbackUrl = null } = query || null;
+    // console.log('call:',callbackUrl, query, context)
 
-//     const session = await getSession({req});
+    const session = await getSession({req});
 
-//     if(session) {
-//         return {
-//             redirect: {
-//                 destination: callbackUrl
-//             }
-//         }
-//     }
-//     const csrfToken = await getCsrfToken(context);
-//     const providers = await getProviders();
+    if(session) {
+        return {
+            redirect: {
+                destination: callbackUrl
+            }
+        }
+    }
+    const csrfToken = await getCsrfToken(context);
+    const providers = await getProviders();
 
-//     return{
-//         props: {
-//             providers,
-//             csrfToken,
-//             callbackUrl
-//         }
-//     }
-// }
+    return{
+        props: {
+            providers,
+            csrfToken,
+            callbackUrl
+        }
+    }
+}

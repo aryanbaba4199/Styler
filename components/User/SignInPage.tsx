@@ -25,6 +25,7 @@ const SignInPage = ({ providers, csrfToken, callbackUrl }: any) => {
     const { login_email, login_password, login_error } = user;
 
     const handleChange = (e: any) => {
+        e.preventDefault();
         const { name, value } = e.target;
         setUser({
             ...user,
@@ -40,6 +41,7 @@ const SignInPage = ({ providers, csrfToken, callbackUrl }: any) => {
     });
 
     const signInHandler = async () => {
+        
         console.log("signInHandler");
         setLoading(true);
         let options = {

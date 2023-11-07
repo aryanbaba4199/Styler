@@ -2,38 +2,50 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header/Header";
 import MenuSideBar from "@/components/Header/MenuSidebar";
 import SignInPage from "@/components/User/SignInPage";
+import { useRouter } from "next/dist/client/router";
 
 import { getProviders, getCsrfToken, getSession } from "next-auth/react";
 
 export const getServerSideProps = async (context: any) => {
     const { req, query } = context;
-    const { callbackUrl = null } = query || null;
-    // console.log('call:',callbackUrl, query, context)
+    let { callbackUrl } = query;
+    
+    // If callbackUrl is undefined or null, set a default value
+    if (callbackUrl === undefined || callbackUrl === null) {
+        callbackUrl = '/';
+    }
 
-    const session = await getSession({req});
+    const session = await getSession({ req });
 
-    if(session) {
+    if (session) {
         return {
             redirect: {
                 destination: callbackUrl
             }
-        }
+        };
     }
     const csrfToken = await getCsrfToken(context);
     const providers = await getProviders();
 
-    return{
+    return {
         props: {
             providers,
             csrfToken,
             callbackUrl
         }
-    }
+    };
 }
 
 const SignIn = ({ providers, csrfToken, callbackUrl }: any) => {
-    providers = Object.values(providers);
-    console.log(providers, csrfToken, callbackUrl);
+    const router = useRouter();
+    if (providers) {
+        providers = Object.values(providers);
+      } else {
+        router.push("/")
+      }
+      
+    console.log("Sign In objects are","Providers are", providers,
+    "CSRF are", csrfToken, "Callback url",  callbackUrl);
     
     return ( 
         <>

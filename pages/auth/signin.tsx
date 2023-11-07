@@ -34,7 +34,7 @@ export const getServerSideProps = async (context: any) => {
     if(session) {
         return {
             redirect: {
-                destination: callbackUrl
+                destination: JSON.stringify("/")
             }
         }
     }

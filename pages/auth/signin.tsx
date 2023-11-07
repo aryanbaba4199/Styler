@@ -6,13 +6,7 @@ import SignInPage from "@/components/User/SignInPage";
 import { getProviders, getCsrfToken, getSession } from "next-auth/react";
 
 const SignIn = ({ providers, csrfToken, callbackUrl }: any) => {
-    try{
-    if (providers && typeof providers === 'object') {
-      providers = Object.values(providers);
-    } else {
-        console.log("Here error occured in sign in");
-    }
-}catch (e) {console.log(e);}
+    providers = Object.values(providers);
     
     return ( 
         <>
@@ -30,28 +24,28 @@ export default SignIn;
 
 
 
-export const getServerSideProps = async (context: any) => {
-    const { req, query } = context;
-    const { callbackUrl = null } = query || null;
-    // console.log('call:',callbackUrl, query, context)
+// export const getServerSideProps = async (context: any) => {
+//     const { req, query } = context;
+//     const { callbackUrl = null } = query || null;
+//     // console.log('call:',callbackUrl, query, context)
 
-    const session = await getSession({req});
+//     const session = await getSession({req});
 
-    if(session) {
-        return {
-            redirect: {
-                destination: callbackUrl
-            }
-        }
-    }
-    const csrfToken = await getCsrfToken(context);
-    const providers = await getProviders();
+//     if(session) {
+//         return {
+//             redirect: {
+//                 destination: callbackUrl
+//             }
+//         }
+//     }
+//     const csrfToken = await getCsrfToken(context);
+//     const providers = await getProviders();
 
-    return{
-        props: {
-            providers,
-            csrfToken,
-            callbackUrl
-        }
-    }
-}
+//     return{
+//         props: {
+//             providers,
+//             csrfToken,
+//             callbackUrl
+//         }
+//     }
+// }

@@ -7,33 +7,32 @@ import { useRouter } from "next/dist/client/router";
 import { getProviders, getCsrfToken, getSession } from "next-auth/react";
 
 export const getServerSideProps = async (context: any) => {
-    const { req, query } = context;
-    let { callbackUrl } = query;
     
-    // If callbackUrl is undefined or null, set a default value
-    if (callbackUrl === undefined || callbackUrl === null) {
-        callbackUrl = '/';
-    }
+    const { req, query } = context;
+    
+    const { callbackUrl } = query || { callbackUrl: '/default-url' };
+    // console.log('call:',callbackUrl, query, context)
 
-    const session = await getSession({ req });
+    const session = await getSession({req});
 
-    if (session) {
+    if(session) {
         return {
             redirect: {
                 destination: callbackUrl
             }
-        };
+        }
     }
+    
     const csrfToken = await getCsrfToken(context);
     const providers = await getProviders();
 
-    return {
+    return{
         props: {
             providers,
             csrfToken,
             callbackUrl
         }
-    };
+    }
 }
 
 const SignIn = ({ providers, csrfToken, callbackUrl }: any) => {

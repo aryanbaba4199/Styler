@@ -6,7 +6,13 @@ import SignInPage from "@/components/User/SignInPage";
 import { getProviders, getCsrfToken, getSession } from "next-auth/react";
 
 const SignIn = ({ providers, csrfToken, callbackUrl }: any) => {
-    providers = Object.values(providers);
+    try{
+    if (providers && typeof providers === 'object') {
+      providers = Object.values(providers);
+    } else {
+        console.log("Here error occured in sign in");
+    }
+}catch (e) {console.log(e);}
     
     return ( 
         <>

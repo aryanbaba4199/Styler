@@ -29,14 +29,14 @@ export const authOptions = {
         }
       }
     }),
-    GithubProvider({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
-    }),
-    GoogleProvider({
-      clientId: process.env.GOOGLE_ID,
-      clientSecret: "sdudfihuskhfiusghdiufIUYHGUYGYUBJBdskhkugsufus",
-    }),
+    // GithubProvider({
+    //   clientId: process.env.GITHUB_ID,
+    //   clientSecret: process.env.GITHUB_SECRET,
+    // }),
+    // GoogleProvider({
+    //   clientId: process.env.GOOGLE_ID,
+    //   clientSecret: "sdudfihuskhfiusghdiufIUYHGUYGYUBJBdskhkugsufus",
+    // }),
     // ...add more providers here
   ],
   callbacks: {
